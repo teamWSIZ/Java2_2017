@@ -21,6 +21,17 @@ public class Mapy {
 
         UUID.randomUUID().toString().substring(0, 5);  //[.....]
 
+        for(int id : users.keySet()) {
+            User u = users.get(id);
+            System.out.println(u);
+        }
+
+        for(User u : users.values()) {
+            if (u.id %2 == 0) {
+                System.out.println(u);   //wypisuje userow z parzystym id
+            }
+        }
+
 
 
     }
