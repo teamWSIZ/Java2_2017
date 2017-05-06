@@ -2,6 +2,7 @@ package zajecia5;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.io.IOException;
 import java.util.Date;
@@ -40,6 +41,24 @@ public class Startowa {
         try {
             SupEvent innyOdczytany = mapper.readValue(innyJson, SupEvent.class);
             System.out.println(innyOdczytany);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        XmlMapper mapperX = new XmlMapper();
+        String xml = null;
+        try {
+            xml = mapperX.writeValueAsString(event);
+            System.out.println(xml);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            SupEvent back = mapperX.readValue(xml, SupEvent.class);
+            System.out.println(back);
         } catch (IOException e) {
             e.printStackTrace();
         }
