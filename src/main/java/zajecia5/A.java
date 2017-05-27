@@ -44,7 +44,5 @@ public class A {
 
         System.out.println("w.x=" + w.x);
         System.out.println("g.x=" + g.x);
-
-
     }
 }
