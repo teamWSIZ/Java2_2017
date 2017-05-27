@@ -23,7 +23,11 @@ public class Bank {
     }
 
 
-
+    public void transferFunds(int idKontaDawcy, int idKontaBiorcy, int funds) {
+        //sprawdzic czy oba konta istnieja
+        //sprawdzic czy dawca ma odpowiedni stan konta
+        //wykonac transfer
+    }
 
 
 
