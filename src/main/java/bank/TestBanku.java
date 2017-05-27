@@ -4,7 +4,7 @@ import bank.model.Bank;
 import bank.model.Klient;
 import bank.model.Konto;
 
-public class A {
+public class TestBanku {
     public static void main(String[] args) {
         Klient klient1 = new Klient();
         klient1.setId(1);
@@ -25,15 +25,24 @@ public class A {
         System.out.println(konto1);
         System.out.println(konto2);
 
+        //dodawanie kont dla klientów
         Bank bank = new Bank();
         bank.addClient(klient1);
         bank.addClient(klient2);
 
         System.out.println(bank.getKlienci());
 
+        //tworzenie kont dla klienta nr 1 i 2
         bank.createAccoutForClient(1);
         bank.createAccoutForClient(2);
         System.out.println(bank.getKonta());
-        
+
+        //Wypisanie kont klienta nr 1
+        System.out.println(bank.getAccountsForClient(1));
+
+
+        //wpłacanie pieniędzy
+        bank.depositFunds(1, 150);
+
     }
 }
