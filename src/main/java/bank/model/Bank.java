@@ -6,10 +6,12 @@ import java.util.List;
 public class Bank {
     private List<Klient> klienci;
     private List<Konto> konta;
+    int nastepnyNrKonta;
 
     public Bank() {
         klienci = new ArrayList<>();
         konta = new ArrayList<>();
+        nastepnyNrKonta = 1;
     }
 
     public void addClient(Klient k) {
@@ -20,6 +22,8 @@ public class Bank {
         Konto k = new Konto();
         k.setIdklienta(idklienta);
         k.setStankonta(0);
+        k.setIdkonta(nastepnyNrKonta);
+        nastepnyNrKonta++;
         konta.add(k);
     }
 
