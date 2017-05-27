@@ -49,6 +49,12 @@ public class Bank {
         //
     }
 
+    public Konto getKontoByKontoId(int kontoid) {
+        for(Konto k : konta) {
+            if (k.getIdkonta()==kontoid) return k;
+        }
+        return null;
+    }
 
     public List<Klient> getKlienci() {
         return klienci;

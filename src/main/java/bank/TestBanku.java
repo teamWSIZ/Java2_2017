@@ -39,7 +39,9 @@ public class TestBanku {
 
         //Wypisanie kont klienta nr 1
         System.out.println(bank.getAccountsForClient(1));
-
+        //Pokazanie szczegółów konta nr 1
+        System.out.println(bank.getKontoByKontoId(1));
+        System.out.println(bank.getKontoByKontoId(111));
 
         //wpłacanie pieniędzy
         bank.depositFunds(1, 150);
