@@ -7,16 +7,36 @@ public class Bank {
     private List<Klient> klienci;
     private List<Konto> konta;
     int nastepnyNrKonta;
+    int nastepnyNrKlienta;
 
     public Bank() {
         klienci = new ArrayList<>();
         konta = new ArrayList<>();
         nastepnyNrKonta = 1;
+        nastepnyNrKlienta = 1;
     }
 
+    //Dodawanie klientów; uwaga: id klienta musi być unikalne i ustawione!
+    @Deprecated
     public void addClient(Klient k) {
         klienci.add(k);
     }
+
+
+
+
+
+
+    public Klient addClient(String nazwaKlienta) {
+        Klient nowy = new Klient();
+        nowy.setId(nastepnyNrKlienta);
+        nastepnyNrKlienta++;
+        nowy.setNazwisko(nazwaKlienta);
+        klienci.add(nowy);
+        return nowy;
+    }
+
+
 
     public void createAccoutForClient(int idklienta) {
         Konto k = new Konto();
@@ -42,11 +62,21 @@ public class Bank {
         // 2) musi istniec konto o idkonta
         // jeśli nie 1 i 2 to wyrzuć wyjątek
         if (funds<=0) throw new RuntimeException("Nie można wpłacać ujemnych sum");
+        Konto docelowe = getKontoByKontoId(idkonta);
+        if (docelowe==null) throw new RuntimeException("Nie ma takiego konta");
+        docelowe.setStankonta(docelowe.getStankonta() + funds);
+
     }
 
     public void withdrawFunds(int idkonta, int funds) {
-        //
-        //
+        if (funds<0) throw new RuntimeException("Nie można wypłacać ujemnych sum");
+        Konto docelowe = getKontoByKontoId(idkonta);
+        if (docelowe==null) throw new RuntimeException("Nie ma takiego konta");
+        int stankonta = docelowe.getStankonta();
+        if (stankonta<funds) {
+            throw new RuntimeException("Nie można wypłacić więcej niż stan konta");
+        }
+        docelowe.setStankonta(stankonta - funds);
     }
 
     public Konto getKontoByKontoId(int kontoid) {

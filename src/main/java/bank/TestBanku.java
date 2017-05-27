@@ -44,7 +44,18 @@ public class TestBanku {
         System.out.println(bank.getKontoByKontoId(111));
 
         //wpłacanie pieniędzy
-        bank.depositFunds(1, 150);
+        for (int i = 0; i < 10; i++) {
+            bank.depositFunds(1, 10);
+            System.out.println(bank.getKonta());
+        }
+        for (int i = 0; i < 2; i++) {
+            bank.withdrawFunds(1, 50);
+            System.out.println(bank.getKonta());
+        }
+
+        //Dodawanie klientów w nowy sposób:
+        bank.addClient("Che Guevara");
+
 
     }
 }
